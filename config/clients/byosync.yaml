@@ -1,0 +1,52 @@
+# Client config. Onboarding a client is: copy this file, edit it, run
+#   python -m scripts.seed_client config/clients/<name>.yaml
+# Validated against config/client.schema.json. Safe defaults: paused, zero budget, zero send cap,
+# so a new client cannot spend or send until someone sets numbers on purpose.
+
+name: byosync
+display_name: ByoSync
+status: paused
+
+# Apollo credits. 0 means the budget guard refuses every Apollo call.
+monthly_credit_budget: 0
+daily_credit_budget: 0
+daily_send_cap: 0
+judge_threshold: 70        # 0 to 100. Nothing reaches Apollo at or below this score.
+half_life_days: 30
+
+icp_config:
+  target_slice: recently funded Indian AI SaaS companies, any vertical
+  countries: [IN]
+  employee_bands: ["2-10", "4-10", "11-50", "11-100", "51-100"]
+  ai_tokens: [ai, ml, llm, agent, genai, copilot, model]
+  sensitive_data_tokens: [health, fintech, insur, bank, lend, medical, payroll, hr, legal, kyc, edtech, patient]
+  personas:
+    - {seniority: founder, titles: [founder, co-founder, ceo]}
+    - {seniority: cto,     titles: [cto, chief technology officer]}
+    - {seniority: head_eng, titles: [vp engineering, head of engineering, engineering lead]}
+  exclude: {max_employees: 100, requires_no_security_hire: true}
+  lawful_basis: legitimate_interest_b2b   # see docs/COMPLIANCE.md; verify with counsel
+
+signal_weights:
+  enterprise_tier_added: 0.9
+  certification_first_mentioned: 0.95
+  subprocessor_list_published: 0.7
+  security_page_published: 0.6
+  watched_page_changed: 0.15
+  hiring_security_role: 1.0
+  jd_mentions_compliance: 1.0
+  enterprise_logo_announced: 0.95
+  new_api_subdomain: 0.8
+  funding_round: 0.8
+  api_public_beta: 0.75
+  llm_sdk_adopted: 0.75
+  hiring_ai_engineer: 0.6
+  staging_exposed: 0.6
+  product_launch: 0.55
+  new_integration_dep: 0.55
+  hiring_devops_infra: 0.5
+  subdomain_sprawl: 0.5
+  leadership_hire_eng: 0.5
+  hiring_velocity_spike: 0.45
+  no_security_policy: 0.35
+  high_commit_velocity: 0.25

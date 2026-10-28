@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["name", "status", "monthly_credit_budget", "daily_send_cap", "judge_threshold", "icp_config", "signal_weights"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {"type": "string", "pattern": "^[a-z][a-z0-9_]{1,40}$"},
+    "display_name": {"type": "string"},
+    "status": {"enum": ["active", "paused", "archived"]},
+    "monthly_credit_budget": {"type": "integer", "minimum": 0},
+    "daily_credit_budget": {"type": "integer", "minimum": 0},
+    "daily_send_cap": {"type": "integer", "minimum": 0},
+    "judge_threshold": {"type": "integer", "minimum": 0, "maximum": 100},
+    "half_life_days": {"type": "integer", "minimum": 1},
+    "icp_config": {
+      "type": "object",
+      "required": ["personas", "lawful_basis"],
+      "properties": {
+        "personas": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["seniority", "titles"]}},
+        "lawful_basis": {"type": "string", "minLength": 1}
+      }
+    },
+    "signal_weights": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}
+    }
+  }
+}

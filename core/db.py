@@ -13,32 +13,41 @@ def conn():
     with psycopg.connect(DSN, autocommit=True) as c:
         yield c
 
-def upsert_company(c, domain, name=None, country="IN", meta=None):
+def client_id_for(c, name=None):
+    """Resolve a client slug (default: GTM_CLIENT env var, then 'byosync') to its uuid."""
+    name = name or os.environ.get("GTM_CLIENT", "byosync")
+    row = c.execute("select id from clients where name = %s", (name,)).fetchone()
+    if not row:
+        raise RuntimeError(f"client '{name}' not found. Run: python -m scripts.seed_client config/clients/{name}.yaml")
+    return row[0]
+
+def upsert_company(c, domain, name=None, country="IN", meta=None, client_id=None):
+    client_id = client_id or client_id_for(c)
     with c.cursor() as cur:
         cur.execute(
-            """insert into company (domain, name, country, meta)
-               values (%s, %s, %s, coalesce(%s::jsonb, '{}'::jsonb))
-               on conflict (domain) do update
+            """insert into company (client_id, domain, name, country, meta)
+               values (%s, %s, %s, %s, coalesce(%s::jsonb, '{}'::jsonb))
+               on conflict (client_id, domain) do update
                  set last_seen = now(),
                      name = coalesce(company.name, excluded.name)
                returning id""",
-            (domain.lower().strip(), name, country, meta),
+            (client_id, domain.lower().strip(), name, country, meta),
         )
         return cur.fetchone()[0]
 
 def insert_signal(c, company_id, source, signal_type, strength, observed_at,
                   payload, evidence_url, dedupe_key):
-    """Idempotent. Re-running a collector never double counts."""
+    """Idempotent. Re-running a collector never double counts. The signal inherits the company's client."""
     with c.cursor() as cur:
         cur.execute(
             """insert into signal_event
-               (company_id, source, signal_type, strength, observed_at,
+               (client_id, company_id, source, signal_type, strength, observed_at,
                 payload, evidence_url, dedupe_key)
-               values (%s,%s,%s,%s,%s,%s::jsonb,%s,%s)
+               select co.client_id, co.id, %s,%s,%s,%s,%s::jsonb,%s,%s
+               from company co where co.id = %s
                on conflict (dedupe_key) do nothing
                returning id""",
-            (company_id, source, signal_type, strength, observed_at,
-             payload, evidence_url, dedupe_key),
+            (source, signal_type, strength, observed_at, payload, evidence_url, dedupe_key, company_id),
         )
         row = cur.fetchone()
         return row[0] if row else None

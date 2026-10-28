@@ -2,8 +2,8 @@ install:
 	pip install -r requirements.txt
 
 db:
-	psql "$$DATABASE_URL" -f sql/schema.sql
-	psql "$$DATABASE_URL" -f sql/seed_lens.sql
+	python -m scripts.migrate
+	python -m scripts.seed_client config/clients/byosync.yaml
 
 collect:
 	python -m collectors.ats_jobs
@@ -21,3 +21,6 @@ queue:
 
 report:
 	python -m outreach.ledger
+
+test:
+	python -m pytest -q
