@@ -1,0 +1,203 @@
+companies:
+- domain: inferedge.com
+  name: InferEdge
+- domain: fieldproxy.com
+  name: Fieldproxy
+- domain: rehook.ai
+  name: Rehook.ai
+- domain: rdash.io
+  name: RDash
+- domain: castled.io
+  name: Castled.io
+- domain: nationalfinanceolympiad.com
+  name: National Finance Olympiad
+- domain: redbrickai.com
+  name: RedBrick AI
+- domain: bharatx.tech
+  name: BharatX
+- domain: salt.pe
+  name: SALT
+- domain: spadeworks.co
+  name: SpadeWorks
+- domain: kaagaz.app
+  name: Kaagaz
+- domain: paycrunch.in
+  name: PayCrunch
+- domain: blitzllama.com
+  name: Blitzllama
+- domain: savein.money
+  name: SaveIN
+- domain: fello.in
+  name: Fello
+- domain: avairsense.com
+  name: AvairSense
+- domain: betteropinions.in
+  name: Better Opinions
+- domain: coupl.money
+  name: Coupl
+- domain: integrationlabs.co
+  name: Integration Labs
+- domain: craze.ai
+  name: Craze
+- domain: startraven.com
+  name: Raven
+- domain: gullak.money
+  name: Gullak Money
+- domain: slidely.ai
+  name: Slidely AI
+- domain: peoplebox.ai
+  name: Peoplebox.ai
+- domain: mayalabs.io
+  name: Maya Labs
+- domain: compup.io
+  name: CompUp
+- domain: algotest.in
+  name: AlgoTest
+- domain: landeed.com
+  name: Landeed
+- domain: getcone.io
+  name: Cone
+- domain: drdroid.io
+  name: DrDroid
+- domain: floworks.ai
+  name: Floworks
+- domain: superkalam.com
+  name: SuperKalam
+- domain: clueso.io
+  name: Clueso
+- domain: yenmo.in
+  name: Yenmo
+- domain: cheq.money
+  name: CheqUPI
+- domain: infinityapp.in
+  name: Infinity
+- domain: paasa.com
+  name: Paasa
+- domain: surebright.com
+  name: SureBright
+- domain: optifye.ai
+  name: Optifye.ai
+- domain: bolna.ai
+  name: Bolna AI
+- domain: perseus.computer
+  name: Perseus
+- domain: cardboard.ai
+  name: Cardboard
+- domain: apollofirst.xyz
+  name: Apollo
+- domain: play.google.com
+  name: RecordBook
+- domain: imt.care
+  name: IMT Care
+- domain: primevault.com
+  name: PrimeVault
+- domain: bentolabs.ai
+  name: BentoLabs AI
+- domain: fieldproxy.ai
+  name: Fieldproxy
+- domain: redapto.com
+  name: Redapto
+- domain: lab0.ai
+  name: Lab0
+ats:
+- board: ashby
+  slug: craze
+  domain: craze.ai
+  name: Craze
+- board: greenhouse
+  slug: raven
+  domain: startraven.com
+  name: Raven
+- board: ashby
+  slug: clueso
+  domain: clueso.io
+  name: Clueso
+- board: ashby
+  slug: bolna
+  domain: bolna.ai
+  name: Bolna AI
+- board: ashby
+  slug: cardboard
+  domain: cardboard.ai
+  name: Cardboard
+github:
+- org: apollo
+  domain: apollofirst.xyz
+  name: Apollo
+- org: fieldproxy
+  domain: fieldproxy.com
+  name: Fieldproxy
+- org: rdash
+  domain: rdash.io
+  name: RDash
+- org: castledio
+  domain: castled.io
+  name: Castled.io
+- org: redbrick-ai
+  domain: redbrickai.com
+  name: RedBrick AI
+- org: imt
+  domain: imt.care
+  name: IMT Care
+- org: spadeworks
+  domain: spadeworks.co
+  name: SpadeWorks
+- org: kaagaz
+  domain: kaagaz.app
+  name: Kaagaz
+- org: blitzllama
+  domain: blitzllama.com
+  name: Blitzllama
+- org: savein
+  domain: savein.money
+  name: SaveIN
+- org: avairsense
+  domain: avairsense.com
+  name: AvairSense
+- org: coupl
+  domain: coupl.money
+  name: Coupl
+- org: gullakmoney
+  domain: gullak.money
+  name: Gullak Money
+- org: slidely-ai
+  domain: slidely.ai
+  name: Slidely AI
+- org: peoplebox
+  domain: peoplebox.ai
+  name: Peoplebox.ai
+- org: maya-labs
+  domain: mayalabs.io
+  name: Maya Labs
+- org: landeed
+  domain: landeed.com
+  name: Landeed
+- org: getcone
+  domain: getcone.io
+  name: Cone
+- org: floworks
+  domain: floworks.ai
+  name: Floworks
+- org: superkalam
+  domain: superkalam.com
+  name: SuperKalam
+- org: yenmo
+  domain: yenmo.in
+  name: Yenmo
+- org: infinityapp
+  domain: infinityapp.in
+  name: Infinity
+- org: optifye
+  domain: optifye.ai
+  name: Optifye.ai
+- org: bolna-ai
+  domain: bolna.ai
+  name: Bolna AI
+- org: play
+  domain: play.google.com
+  name: RecordBook
+hn_queries:
+- Launch HN India
+- Show HN India AI
+extra_feeds:
+- https://news.google.com/rss/search?q=india+SaaS+%22SOC+2%22&hl=en-IN&gl=IN&ceid=IN:en
