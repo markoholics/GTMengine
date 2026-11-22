@@ -109,6 +109,8 @@ companies:
   name: Adalat AI
 - domain: aravolta.com
   name: Aravolta
+- domain: gosats.io
+  name: GoSats
 ats:
 - board: ashby
   slug: craze
